@@ -1,70 +1,124 @@
-# Getting Started with Create React App
+# Todo Application (مهامي)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, feature-rich Todo application built with React and Material-UI. This application supports Arabic language (RTL) and provides a complete task management solution with local storage persistence.
+
+## Features
+
+- ✅ **Add Todos** - Create new tasks with titles
+- ✏️ **Edit Todos** - Update existing task titles and details
+- 🗑️ **Delete Todos** - Remove tasks with confirmation dialog
+- ✓ **Mark as Complete** - Toggle completion status of tasks
+- 🔍 **Filter Todos** - View all, completed, or non-completed tasks
+- 💾 **Local Storage** - Todos are automatically saved to browser's local storage
+- 🌐 **RTL Support** - Full right-to-left layout for Arabic language
+- 🎨 **Material-UI Design** - Beautiful, modern interface using MUI components
+
+## Technologies Used
+
+- **React** (v19.1.0) - UI library
+- **Material-UI (MUI)** (v7.3.5) - Component library
+- **React Router DOM** (v6.30.1) - Routing (if needed)
+- **UUID** (v13.0.0) - Unique ID generation
+- **React Scripts** (v5.0.1) - Build tooling
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn package manager
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd my-app
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm start
+```
+
+The application will open in your browser at `http://localhost:3000`
 
 ## Available Scripts
 
-In the project directory, you can run:
+- `npm start` - Runs the app in development mode
+- `npm test` - Launches the test runner
+- `npm run build` - Builds the app for production to the `build` folder
+- `npm run eject` - Ejects from Create React App (one-way operation)
 
-### `npm start`
+## Project Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+my-app/
+├── public/
+│   ├── fonts/          # Tajawal font files
+│   └── index.html
+├── src/
+│   ├── components/
+│   │   ├── Todo.js     # Individual todo item component
+│   │   └── Todolist.js # Main todo list container
+│   ├── contexts/
+│   │   └── todosContext.js  # React Context for state management
+│   ├── App.js          # Main application component
+│   ├── App.css         # Application styles
+│   ├── index.js        # Application entry point
+│   └── index.css       # Global styles
+└── package.json
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Usage
 
-### `npm test`
+1. **Adding a Todo**: Enter a task title in the input field and click the "إضافة" (Add) button
+2. **Completing a Todo**: Click the checkmark icon to mark a task as completed
+3. **Editing a Todo**: Click the edit icon to modify a task's title and details
+4. **Deleting a Todo**: Click the delete icon and confirm the deletion
+5. **Filtering Todos**: Use the toggle buttons to filter between:
+   - غير منجز (Non-completed)
+   - منجز (Completed)
+   - الكل (All)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features in Detail
 
-### `npm run build`
+### State Management
+- Uses React Context API (`TodosContext`) for global state management
+- Todos are stored in component state and synchronized with localStorage
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Local Storage
+- All todos are automatically saved to browser's local storage
+- Todos persist across page refreshes and browser sessions
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### UI/UX
+- Responsive design with Material-UI components
+- Dark theme background (#181616)
+- Custom color scheme for todo cards (#283593)
+- RTL (Right-to-Left) layout support for Arabic text
+- Tajawal font family for Arabic typography
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Browser Support
 
-### `npm run eject`
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## License
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This project is private and not licensed for public use.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Author
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Created as part of a React Front-End Course project.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**Note**: This application is configured for Arabic language interface. All UI text and interactions are in Arabic with RTL layout support.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
