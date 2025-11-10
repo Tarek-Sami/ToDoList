@@ -9,7 +9,7 @@ import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 // other imports
-import {useState, useContext, useEffect} from "react";
+import {useState, useContext, useEffect, useMemo} from "react";
 import {TodosContext} from "../contexts/todosContext";
 import {v4 as uuidv4} from "uuid";
 // component imports
@@ -23,8 +23,13 @@ export default function Todolist() {
   const [displayedTodosType, setDisplayedTodosType] = useState("all");
 
   // Filterd Todos
-  const compledtedTodos = todos.filter((todo) => todo.isCompleted);
-  const notCompletedTodos = todos.filter((todo) => !todo.isCompleted);
+  const compledtedTodos = useMemo(() => {
+    return todos.filter((todo) => todo.isCompleted);
+  }, [todos]);
+  const notCompletedTodos = useMemo(() => {
+    return todos.filter((todo) => !todo.isCompleted);
+  }, [todos]);
+
   // End of Filtered Todos
 
   let todosToBeDisplayed = todos;
