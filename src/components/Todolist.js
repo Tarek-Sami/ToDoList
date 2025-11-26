@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Container from '@mui/material/Container';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -9,11 +10,11 @@ import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 // other imports
-import { useState, useContext, useEffect, useMemo, useReducer } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useToast } from '../contexts/toastContext';
+import { useTodos, useDispatch } from '../contexts/todosContext';
 // component imports
 import Todo from './Todo';
-import todosReducer from '../reducers/todosReducer';
 // Dialog imports
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -22,7 +23,9 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 export default function Todolist() {
-  const [todos, dispatch] = useReducer(todosReducer, []);
+  const { todos } = useTodos();
+  const { dispatch } = useDispatch();
+
   const { showHideToast } = useToast();
 
   const [titleInput, setTitleInput] = useState('');

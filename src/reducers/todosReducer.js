@@ -34,6 +34,19 @@ export default function todosReducer(currentTodos, action) {
       localStorage.setItem('todos', JSON.stringify(updatedTodos));
       return updatedTodos;
     }
+    case 'complete': {
+      const updatedTodos = currentTodos.map((t) => {
+        if (t.id === action.payload.id) {
+          return {
+            ...t,
+            isCompleted: !t.isCompleted,
+          };
+        }
+        return t;
+      });
+      localStorage.setItem('todos', JSON.stringify(updatedTodos));
+      return updatedTodos;
+    }
     case 'get': {
       const storgeTodos = JSON.parse(localStorage.getItem('todos')) || [];
       return storgeTodos;

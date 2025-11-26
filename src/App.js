@@ -1,10 +1,8 @@
 import './App.css';
 import Todolist from './components/Todolist';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { TodosContext } from './contexts/todosContext';
-import { useState } from 'react';
 import { ToastProvider } from './contexts/toastContext';
-
+import TodosProvider from './contexts/todosContext';
 const theme = createTheme({
   typography: {
     fontFamily: ['Tajawal'],
@@ -14,29 +12,26 @@ const theme = createTheme({
   },
 });
 
-const initialTodos = [];
 function App() {
-  const [todos, setTodos] = useState(initialTodos);
-
   return (
     <ThemeProvider theme={theme}>
-      <div
-        className="App"
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '100vh',
-          backgroundColor: '#181616',
-          direction: 'rtl',
-        }}
-      >
-        <TodosContext.Provider value={{ todos, setTodos }}>
+      <TodosProvider>
+        <div
+          className="App"
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100vh',
+            backgroundColor: '#181616',
+            direction: 'rtl',
+          }}
+        >
           <ToastProvider>
             <Todolist />
           </ToastProvider>
-        </TodosContext.Provider>
-      </div>
+        </div>
+      </TodosProvider>
     </ThemeProvider>
   );
 }

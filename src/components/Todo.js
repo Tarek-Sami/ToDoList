@@ -7,14 +7,13 @@ import CheckIcon from '@mui/icons-material/Check';
 import EditIcon from '@mui/icons-material/Edit';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
-// other
-import { useContext } from 'react';
-import { TodosContext } from '../contexts/todosContext';
+// other imports
+import { useDispatch } from '../contexts/todosContext';
 import { useToast } from '../contexts/toastContext';
 // dialog imports
 
 export default function Todo({ todo, showDelete, showEdit }) {
-  const { todos, setTodos } = useContext(TodosContext);
+  const { dispatch } = useDispatch();
   const { showHideToast } = useToast();
   //Handle Clicks Functions
 
@@ -23,16 +22,9 @@ export default function Todo({ todo, showDelete, showEdit }) {
   }
 
   function handleCheckClick() {
-    const updatedTodos = todos.map((t) => {
-      if (t.id === todo.id) {
-        t.isCompleted = !t.isCompleted;
-      }
-      return t;
-    });
-    setTodos(updatedTodos);
-    localStorage.setItem('todos', JSON.stringify(updatedTodos));
+    dispatch({ type: 'complete', payload: todo });
     showHideToast(
-      !todo.isCompleted ? 'تم وضع المهمة كغير مكتملة' : 'تم إكمال المهمة بنجاح'
+      todo.isCompleted ? 'تم وضع المهمة كغير مكتملة' : 'تم إكمال المهمة بنجاح'
     );
   }
 
